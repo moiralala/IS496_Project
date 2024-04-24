@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmFinder</title>
+    <!-- Include jQuery before your index.js file -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</head>
+<body>
+    <h1>Welcome to FilmFinder</h1>
+    
+    <!-- Login form -->
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Username"><br>
+    <input type="password" id="loginPassword" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+
+    <!-- Registration form -->
+    <h2>Register</h2>
+    <input type="text" id="registerUsername" placeholder="Username"><br>
+    <input type="password" id="registerPassword" placeholder="Password"><br>
+    <button onclick="register()">Register</button>
+</body>
+</html>
