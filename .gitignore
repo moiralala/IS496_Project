@@ -1,0 +1,11 @@
+*.log
+
+node_modules/
+
+config.env
+
+/dist
+
+**/temp/
+
+Miniconda3-latest-Linux-x86_64.sh
