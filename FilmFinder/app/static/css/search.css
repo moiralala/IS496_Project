@@ -1,0 +1,86 @@
+/* static/css/search.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #FFF;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: right;
+}
+
+.header a {
+    text-decoration: none;
+    color: #20B2AA;
+    font-weight: bold;
+}
+
+#search-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+#search-container input,
+#search-container button {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#search-container button {
+    background-color: #20B2AA;
+    color: white;
+    cursor: pointer;
+}
+
+#search-container button:hover {
+    background-color: #007bff;
+}
+
+#loading-indicator {
+    text-align: center;
+    color: #20B2AA;
+    font-size: 20px;
+    display: none;
+}
+
+.movie-result,
+.actor-result {
+    background-color: white;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.movie-result h3,
+.actor-result h3 {
+    color: #20B2AA;
+}
+
+.movie-result p,
+.actor-result p {
+    color: #666;
+}
+
+#results-container {
+    padding-left: 40px; 
+    padding-right: 40px; 
+}
+
+.no-results-message {
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+

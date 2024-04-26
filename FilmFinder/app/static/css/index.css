@@ -1,0 +1,45 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    padding-top: 50px; /* 增加标题上方的空白 */
+}
+
+.form-container {
+    margin-top: 40px; /* 调整表单之间的垂直间距 */
+}
+
+.form-container h2 {
+    color: #20B2AA;
+}
+
+.form-container input,
+.form-container button {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    background-color: #20B2AA;
+    color: white;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #007bff;
+}
+
+.no-results-message {
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}

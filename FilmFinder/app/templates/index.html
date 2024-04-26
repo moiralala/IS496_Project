@@ -7,20 +7,27 @@
     <!-- Include jQuery before your index.js file -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-    <h1>Welcome to FilmFinder</h1>
-    
-    <!-- Login form -->
-    <h2>Login</h2>
-    <input type="text" id="loginUsername" placeholder="Username"><br>
-    <input type="password" id="loginPassword" placeholder="Password"><br>
-    <button onclick="login()">Login</button>
+    <div class="container">
+        <h1>Welcome to FilmFinder</h1>
+        
+        <!-- Login form -->
+        <div class="form-container">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" class="search-input" placeholder="Username"><br>
+            <input type="password" id="loginPassword" class="search-input" placeholder="Password"><br>
+            <button onclick="login()" class="search-button">Login</button>
+        </div>
 
-    <!-- Registration form -->
-    <h2>Register</h2>
-    <input type="text" id="registerUsername" placeholder="Username"><br>
-    <input type="password" id="registerPassword" placeholder="Password"><br>
-    <button onclick="register()">Register</button>
+        <!-- Registration form -->
+        <div class="form-container">
+            <h2>Register</h2>
+            <input type="text" id="registerUsername" class="search-input" placeholder="Username"><br>
+            <input type="password" id="registerPassword" class="search-input" placeholder="Password"><br>
+            <button onclick="register()" class="search-button">Register</button>
+        </div>
+    </div>
 </body>
 </html>

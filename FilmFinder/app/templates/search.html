@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FilmFinder Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+</head>
+<body>
+    <div class="header">
+        <a href="/user-home">Home</a>
+    </div>
+    <div id="search-container">
+        <input type="text" id="movie-input" placeholder="Movie name..." />
+        <input type="text" id="actor-input" placeholder="Actor name..." />
+        <input type="text" id="genre-input" placeholder="Genre (e.g., Comedy)" />
+        <input type="number" id="year-input" placeholder="Year (e.g., 1990 for movies since then)" />
+        <button onclick="search()">Search</button>
+    </div>
+    <div id="loading-indicator">Loading...</div>
+    <div id="results-container">
+        <!-- Search results will be displayed here -->
+    </div>
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+</body>
+</html>

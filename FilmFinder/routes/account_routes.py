@@ -1,5 +1,5 @@
 from app import app
-from flask import request, render_template, jsonify, session
+from flask import request, render_template, jsonify, session, redirect
 from utils.account_utils import register_user, check_user_cred, get_user_id, is_username_available
 
 @app.route('/')

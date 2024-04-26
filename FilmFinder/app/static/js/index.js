@@ -1,4 +1,3 @@
-// Adjust path for AJAX requests
 function login() {
     var user_name = $('#loginUsername').val();
     var password = $('#loginPassword').val();
@@ -11,7 +10,8 @@ function login() {
         success: function(response) {
             if (response.success) {
                 alert('Login successful!');
-                // Redirect or perform any other actions on successful login
+                // Redirect to search page on successful login
+                window.location.href = '/search-page';
             } else {
                 alert('Login failed: ' + response.message);
             }

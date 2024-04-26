@@ -1,2 +1,2 @@
 from .account_routes import*
-from .moives_routes import*
+from .search_routes import*
