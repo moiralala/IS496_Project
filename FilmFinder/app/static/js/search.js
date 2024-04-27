@@ -78,7 +78,10 @@ function displayResults(results) {
 
 function constructMovieDetails(movie) {
     return `
-        <h3>${movie.title} (${movie.year})</h3>
+        <div class="movie-header">
+            <h3>${movie.title} (${movie.year})</h3>
+            <button onclick="addFavorite('${movie.movie_id}', null)">☆ Collect</button>
+        </div>
         <p>Rating: ${movie.rating}</p>
         <p>Genre: ${movie.genres.join(', ')}</p>
         <p>Cast: ${movie.cast.join(', ')}</p>
@@ -88,7 +91,10 @@ function constructMovieDetails(movie) {
 
 function constructActorDetails(actor) {
     return `
-        <h3>${actor.name}</h3>
+        <div class="actor-header">
+            <h3>${actor.name}</h3>
+            <button onclick="addFavorite(null, '${actor.actor_id}')">☆ Collect</button>
+        </div>
         <p>Biography: ${actor.biography.join(' ')}</p>
         <p>Filmography: ${actor.filmography.join(', ')}</p>
     `;
@@ -103,3 +109,27 @@ function showError(message) {
     var resultsContainer = document.getElementById('results-container');
     resultsContainer.innerHTML = `<p>Error during search: ${message}</p>`;
 }
+
+
+function addFavorite(movieId, actorId) {
+    const data = { user_id: userId, movie_id: movieId, actor_id: actorId };
+
+    fetch('/add-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // If CSRF protection is enabled, you'll need to include the CSRF token in the request headers
+            // 'X-CSRFToken': csrf_token  // You would need to set the csrf_token variable accordingly
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);  // Use the message from the server for user feedback
+    })
+    .catch(error => {
+        console.error('Error during favoriting:', error);
+        alert(`Error adding favorite: ${error.message}`);
+    });
+}
+

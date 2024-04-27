@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FilmFinder User Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Welcome, {{ session['user_name'] }}</h1>
+            <a href="/search-page" class="back-link">Back to Search</a>
+        </div>
+    </div>
+    <div class="container">
+        <section id="favorites">
+            <h2>Your Favorite Movies</h2>
+            <div id="favorite-movies">
+                <!-- Favorite movies will be displayed here -->
+            </div>
+            <h2>Your Favorite Actors</h2>
+            <div id="favorite-actors">
+                <!-- Favorite actors will be displayed here -->
+            </div>
+        </section>
+    </div>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+/* static/css/home.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #FFF;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    padding: 20px;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    margin-left: 20px;
+    font-size: 24px;
+}
+
+.header a.back-link {
+    text-decoration: none;
+    color: #20B2AA;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#favorites {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #20B2AA;
+    padding-left: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+#favorite-movies, #favorite-actors {
+    padding: 20px;
+}
+
+.no-items-message {
+    color: #888;
+    font-style: italic;
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    margin-left: 20px;
+}
+
+li:last-child {
+    border-bottom: none;
+}

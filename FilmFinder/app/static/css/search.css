@@ -84,3 +84,22 @@ body {
     margin-top: 20px;
 }
 
+/*css for moive & actor's header*/
+.movie-header, .actor-header {
+    position: relative;
+}
+
+.movie-header button, .actor-header button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: #20B2AA;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.movie-header button:hover, .actor-header button:hover {
+    color: gold;
+}

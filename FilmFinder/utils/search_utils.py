@@ -1,5 +1,7 @@
+from flask import jsonify
 from imdb import IMDb
 import logging
+from .database import get_db_connection
 
 # Set up basic configuration for logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')

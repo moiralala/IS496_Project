@@ -1,5 +1,4 @@
 from .database import get_db_connection
-import sqlite3
 
 def register_user(user_name, password):
     with get_db_connection() as conn:

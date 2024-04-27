@@ -16,10 +16,13 @@
         <input type="number" id="year-input" placeholder="Year (e.g., 1990 for movies since then)" />
         <button onclick="search()">Search</button>
     </div>
-    <div id="loading-indicator">Loading...</div>
+    <div id="loading-indicator">Loading...It may take 30-60s</div>
     <div id="results-container">
         <!-- Search results will be displayed here -->
     </div>
+    <script>
+        const userId = "{{ 'user_id' }}"; 
+    </script>
     <script src="{{ url_for('static', filename='js/search.js') }}"></script>
 </body>
 </html>

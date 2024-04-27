@@ -9,3 +9,22 @@ config.env
 **/temp/
 
 Miniconda3-latest-Linux-x86_64.sh
+FilmFinder/utils/__pycache__/__init__.cpython-38.pyc
+FilmFinder/utils/__pycache__/account_utils.cpython-38.pyc
+FilmFinder/utils/__pycache__/search_utils.cpython-38.pyc
+FilmFinder/utils/__pycache__/home_utils.cpython-38.pyc
+FilmFinder/utils/__pycache__/search_utils.cpython-38.pyc
+FilmFinder/utils/__pycache__/account_utils.cpython-38.pyc
+FilmFinder/utils/__pycache__/__init__.cpython-38.pyc
+FilmFinder/routes/__pycache__/search_routes.cpython-38.pyc
+FilmFinder/routes/__pycache__/home_route.cpython-38.pyc
+FilmFinder/routes/__pycache__/search_routes.cpython-38.pyc
+FilmFinder/routes/__pycache__/__init__.cpython-38.pyc
+FilmFinder/utils/__pycache__/__init__.cpython-38.pyc
+FilmFinder/utils/__pycache__/__init__.cpython-38.pyc
+FilmFinder/routes/__pycache__/__init__.cpython-38.pyc
+FilmFinder/utils/__pycache__/search_utils.cpython-38.pyc
+FilmFinder/routes/__pycache__/search_routes.cpython-38.pyc
+FilmFinder/routes/__pycache__/__init__.cpython-38.pyc
+FilmFinder/app/__pycache__/__init__.cpython-38.pyc
+FilmFinder/utils/__pycache__/__init__.cpython-38.pyc
