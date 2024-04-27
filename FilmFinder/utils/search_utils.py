@@ -1,6 +1,8 @@
 from flask import jsonify
 from imdb import IMDb
 import logging
+from functools import lru_cache
+from concurrent.futures import ThreadPoolExecutor
 from .database import get_db_connection
 
 # Set up basic configuration for logging
@@ -9,44 +11,41 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 # Initialize the IMDb API instance
 ia = IMDb()
 
-def advanced_search_movies_and_actors(criteria):
+# Implement caching to avoid repeated API calls
+@lru_cache(maxsize=512)
+def get_movie_details(movie_id):
+    return ia.get_movie(movie_id)
+
+
+@lru_cache(maxsize=512)
+def get_actor_details(actor_id):
+    return ia.get_person(actor_id)
+
+
+# Process movie search criteria
+def process_movies(criteria):
     movie_name = criteria.get('movie_name', '').strip()
-    actor_name = criteria.get('actor_name', '').strip()
     genre = criteria.get('genre', '').strip()
     year = criteria.get('year', '').strip()
-
-    # Search for movies and people
+    actor_name = criteria.get('actor_name', '').strip()
     movie_results = ia.search_movie(movie_name) if movie_name else []
-    actor_results = ia.search_person(actor_name) if actor_name else []
-
     detailed_movies = []
-    detailed_actors = []
     matched_movies = []
 
-    # Process movie results
     for movie in movie_results:
         if len(detailed_movies) >= 10:
-            break  # Limit to the first 10 movies
-
+            break
         try:
             movie_id = movie.movieID
-            movie_details = ia.get_movie(movie_id)
-
-            # Apply genre filter
+            movie_details = get_movie_details(movie_id)
             if genre and genre not in movie_details.get('genres', []):
                 continue
-            
-            # Apply year filter
             if year and (not movie_details.get('year') or int(movie_details.get('year', 0)) < int(year)):
                 continue
-
-            # Process cast and match with actor name if provided
             cast_names = [person['name'] for person in movie_details.get('cast', []) if 'name' in person]
             if actor_name and actor_name in cast_names:
-                # This movie is a match and should be prioritized
                 matched_movies.append(movie_details)
             else:
-                # This movie is not a full match but still relevant
                 detailed_movies.append({
                     'title': movie_details.get('title'),
                     'year': movie_details.get('year'),
@@ -58,12 +57,8 @@ def advanced_search_movies_and_actors(criteria):
                 })
         except Exception as e:
             logging.error("Error fetching movie details for ID %s: %s", movie.movieID, e)
-
-    # Sort matched movies by relevance (year and rating)
     matched_movies.sort(key=lambda x: (x.get('year', 0), x.get('rating', 0)), reverse=True)
-
-    # Add matched movies to the front of the detailed movies list
-    for matched_movie in matched_movies[:10]:  # Ensure we don't exceed 10 total
+    for matched_movie in matched_movies[:10]:
         detailed_movies.insert(0, {
             'title': matched_movie.get('title'),
             'year': matched_movie.get('year'),
@@ -73,15 +68,21 @@ def advanced_search_movies_and_actors(criteria):
             'plot': matched_movie.get('plot outline'),
             'movie_id': matched_movie.movieID
         })
+    return detailed_movies[:10]
 
-    # Process actor results
+
+# Process actor search criteria
+def process_actors(criteria):
+    actor_name = criteria.get('actor_name', '').strip()
+    actor_results = ia.search_person(actor_name) if actor_name else []
+    detailed_actors = []
+
     for actor in actor_results:
         if len(detailed_actors) >= 10:
-            break  # Limit to the first 10 actors
-
+            break
         try:
             actor_id = actor.personID
-            actor_details = ia.get_person(actor_id)
+            actor_details = get_actor_details(actor_id)
             detailed_actors.append({
                 'name': actor_details.get('name'),
                 'actor_id': actor_id,
@@ -90,14 +91,19 @@ def advanced_search_movies_and_actors(criteria):
             })
         except Exception as e:
             logging.error("Error fetching actor details for ID %s: %s", actor.personID, e)
+    return detailed_actors
 
-    # Limit the detailed movies list to the top 10 if necessary
-    detailed_movies = detailed_movies[:10]
 
-    # Combine detailed movies with actor results
-    combined_results = {
+def advanced_search_movies_and_actors(criteria):
+    # Use ThreadPoolExecutor to process movies and actors concurrently
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        movie_future = executor.submit(process_movies, criteria)
+        actor_future = executor.submit(process_actors, criteria)
+
+    detailed_movies = movie_future.result()
+    detailed_actors = actor_future.result()
+
+    return {
         'Movies': detailed_movies,
         'Actors': detailed_actors
     }
-
-    return combined_results
