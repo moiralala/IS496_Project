@@ -28,3 +28,5 @@ FilmFinder/routes/__pycache__/search_routes.cpython-38.pyc
 FilmFinder/routes/__pycache__/__init__.cpython-38.pyc
 FilmFinder/app/__pycache__/__init__.cpython-38.pyc
 FilmFinder/utils/__pycache__/__init__.cpython-38.pyc
+
+.DS_Store
