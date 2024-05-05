@@ -1,3 +1,8 @@
+# IS496: Computer Networks
+# Course Mini-Project
+# Name and Netid of each member:
+# Member 1: chenzhao wang, cw107
+# Member 2: Zhen Li, zhenli6
 from flask import jsonify
 from imdb import IMDb
 import logging
@@ -95,7 +100,7 @@ def process_actors(criteria):
 
 
 def advanced_search_movies_and_actors(criteria):
-    # Use ThreadPoolExecutor to process movies and actors concurrently
+    # Use ThreadPoolExecutor to process movies and actors searches concurrently
     with ThreadPoolExecutor(max_workers=2) as executor:
         movie_future = executor.submit(process_movies, criteria)
         actor_future = executor.submit(process_actors, criteria)

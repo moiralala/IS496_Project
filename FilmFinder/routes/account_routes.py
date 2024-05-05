@@ -1,10 +1,17 @@
+# IS496: Computer Networks
+# Course Mini-Project
+# Name and Netid of each member:
+# Member 1: chenzhao wang, cw107
+# Member 2: Zhen Li, zhenli6
 from app import app
 from flask import request, render_template, jsonify, session, redirect
 from utils.account_utils import register_user, check_user_cred, get_user_id, is_username_available
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -18,6 +25,7 @@ def login():
         return jsonify({'success': True, 'user_id': user_id})
     else:
         return jsonify({'success': False, 'message': 'Invalid credentials'})
+
 
 @app.route('/register', methods=['POST'])
 def register():

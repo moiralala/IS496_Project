@@ -1,13 +1,20 @@
+# IS496: Computer Networks
+# Course Mini-Project
+# Name and Netid of each member:
+# Member 1: chenzhao wang, cw107
+# Member 2: Zhen Li, zhenli6
 from flask import Flask, request, jsonify, render_template, session
 from utils.search_utils import advanced_search_movies_and_actors
 from utils.database import get_db_connection
 from app import app 
+
 
 @app.route('/search-page')
 def search_page():
     # Render search.html
     user_id = session.get('user_id', None)
     return render_template('search.html', user_id=user_id)
+
 
 @app.route('/search-api', methods=['GET'])
 def search_api():
