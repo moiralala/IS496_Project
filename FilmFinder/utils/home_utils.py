@@ -8,6 +8,7 @@ from imdb import IMDb
 
 ia = IMDb()
 def get_user_favorites(user_id):
+    # Retrieve favorite movies and actors for a given user ID.
     conn = get_db_connection()
     cur = conn.cursor()
 

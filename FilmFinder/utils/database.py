@@ -8,6 +8,7 @@ import sqlite3
 DATABASE_FILENAME = 'FilmFinder.db'
 
 def get_db_connection():
+    # Open a database connection to the specified SQLite database.
     conn = sqlite3.connect(DATABASE_FILENAME)
     conn.row_factory = sqlite3.Row  
     return conn

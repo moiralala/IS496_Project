@@ -19,16 +19,19 @@ ia = IMDb()
 # Implement caching to avoid repeated API calls
 @lru_cache(maxsize=512)
 def get_movie_details(movie_id):
+    # Retrieve detailed movie information based on the movie ID.
     return ia.get_movie(movie_id)
 
 
 @lru_cache(maxsize=512)
 def get_actor_details(actor_id):
+    # Retrieve detailed actor information based on the actor ID.
     return ia.get_person(actor_id)
 
 
 # Process movie search criteria
 def process_movies(criteria):
+    # Extract search criteria and perform movie search on IMDb.
     movie_name = criteria.get('movie_name', '').strip()
     genre = criteria.get('genre', '').strip()
     year = criteria.get('year', '').strip()
@@ -37,6 +40,7 @@ def process_movies(criteria):
     detailed_movies = []
     matched_movies = []
 
+    # Process search results and filter according to additional criteria.
     for movie in movie_results:
         if len(detailed_movies) >= 10:
             break

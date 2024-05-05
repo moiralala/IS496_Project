@@ -6,6 +6,7 @@
 from .database import get_db_connection
 
 def register_user(user_name, password):
+    # Register a new user with a username and password.
     with get_db_connection() as conn:
         conn.execute(
             "INSERT INTO User (user_name, password) VALUES (?, ?)",
@@ -15,6 +16,7 @@ def register_user(user_name, password):
     return True
 
 def check_user_cred(user_name, password):
+    # Check if provided username and password are correct.
     with get_db_connection() as conn:
         user = conn.execute(
             "SELECT * FROM User WHERE user_name = ?", (user_name,)
@@ -24,6 +26,7 @@ def check_user_cred(user_name, password):
     return False
 
 def get_user_id(user_name, password):
+    # Fetch the user ID for a given username and password.
     with get_db_connection() as conn:
         result = conn.execute(
             "SELECT user_id FROM User WHERE user_name = ? AND password = ?", (user_name, password)
@@ -31,6 +34,7 @@ def get_user_id(user_name, password):
     return result['user_id']
 
 def is_username_available(user_name):
+    # Check if a username is available for registration.
     with get_db_connection() as conn:
         result = conn.execute(
             "SELECT user_name FROM User WHERE user_name = ?", (user_name,)
