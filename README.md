@@ -1,4 +1,5 @@
-# IS496_Course Mini-Project
+# FilmFinder -- Uncover Your Next Favorite Movie
+IS496_Course Mini Project
 
 # About Project
 Our group proposes to develop a Movie Recommendation/Search Application by referencing the IMDb database. This application aims to serve movie enthusiasts by providing a user-friendly interface to search and discover movies based on various criteria such as genre, cast, rating, and runtimes. Additionally, it will feature functionalities for users to register/log in to manage the list of their favorite movies. A distinctive aspect of our application will be its ability to handle multiple client requests simultaneously, ensuring a seamless experience for all users.
